@@ -3,110 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>论坛界面</title>
+    <title>专业司机培训学校</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
+            display: flex;
         }
-        .forum-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .forum-category {
+        .sidebar {
+            width: 250px;
             background-color: #333;
+            height: 100vh;
             color: white;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 20px;
+            transition: width 0.3s;
         }
-        .forum-thread {
-            background-color: white;
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .sidebar .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .sidebar .submenu a {
+            padding: 5px;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .card {
+            background-color: #fff;
             border: 1px solid #ddd;
-            margin-bottom: 10px;
-            padding: 10px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .thread-title {
-            font-size: 18px;
-            margin-bottom: 5px;
+        .card:hover {
+            transform: translateY(-5px);
         }
-        .thread-info {
-            font-size: 14px;
+        .card-category {
+            text-transform: uppercase;
             color: #666;
+            font-size: 0.8em;
+            margin-bottom: 10px;
         }
-        .thread-content {
-            margin-top: 10px;
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
-        /* 响应式设计：手机界面 */
+        .card-content {
+            font-size: 1em;
+            color: #333;
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .forum-thread {
-                padding: 5px;
+            body {
+                flex-direction: row; /* 保持侧边栏在左侧 */
             }
-            .thread-title {
-                font-size: 16px;
+            .sidebar {
+                width: auto; /* 保持固定宽度 */
+                height: auto;
             }
-            .thread-info {
-                font-size: 12px;
+            .main-content {
+                flex-grow: 1;
+                padding: 20px;
             }
+            .card-container {
+                grid-template-columns: 1fr; /* 卡片堆叠 */
+            }
+            .download-btn {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
+        .download-btn:hover {
+            background-color: #4cae4c;
+        }
+    }
     </style>
 </head>
 <body>
-    <h1 class="forum-title">论坛首页</h1>
-    
-    <div class="forum-category">
-        <h2>讨论区</h2>
+    <div class="sidebar">
+                <h2></h2>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu0')">首页</a>
+        <div id="submenu0" class="submenu">
+            <a href="https://abcd136.github.io/b/">跳转</a>
+            </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu1')">通知</a>
+        <div id="submenu1" class="submenu">
+            <a href="https://abcd136.github.io/b1/">公告</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu2')">广播</a>
+        <div id="submenu2" class="submenu">
+            <a href="#">广播站</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu3')">安卓</a>
+        <div id="submenu3" class="submenu">
+            <a href="#">软件</a>
+            <a href="#">梯子</a>
+            <a href="#">影视</a>
+            <a href="#">小说</a>
+            <a href="#">AI</a>
+            <a href="#">搜图</a>
+            <a href="#">私密</a>
+            <a href="#">网盘</a>
+            <a href="#">手游</a>
+            <a href="#">动漫</a>
+            <a href="#">工具</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu4')">电脑</a>
+        <div id="submenu4" class="submenu">
+            <a href="#">软件</a>
+            <a href="#">梯子</a>
+            <a href="#">游戏网站</a>
+            <a href="#">游戏加速</a>
+            <a href="#">游戏</a>
+            <a href="#">系统</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu5')">吃瓜</a>
+        <div id="submenu5" class="submenu">
+            <a href="#">网络</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu6')">车牌</a>
+        <div id="submenu6" class="submenu">
+            <a href="#">网络</a>
+            <a href="#">车号</a>
+            <a href="#">里番</a>
+        </div>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu7')">旧网站</a>
+        <div id="submenu7" class="submenu">
+            <a href="https://abcd136.github.io/abcd/">跳转</a>
+        </div>
     </div>
-    
-    <div class="forum-thread">
-        <a href="https://abcd136.github.io/b42/">一部可能你从未看过的南京大屠杀影片</a>
-        <div class="thread-info">作者: 皮卡皮卡 | 发布时间: 2024-06-14 | 浏览: 3467次</div>
-        <div class="thread-content">
+    <div class="main-content">
+        <div class="header">
+            <h1></h1>
+        </div>
+
+        <div class="card-container">
+            
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title"></div>
+        <div class="card-content">
+        <div class="download-section">
+            一部可能你从未看过的南京大屠杀影片
+        <p><a href="https://share.feijipan.com/s/IyBUeFjV" class="download-btn">下载</a>
         
-        </div>
+</div>
+            </div>
     </div>
-    
-    <div class="forum-thread">
-        <a href="https://abcd136.github.io/b43/">黑太阳南京大屠杀</a>
-        <div class="thread-info">作者: 皮卡皮卡 | 发布时间: 2024-06-13 | 浏览: 2174次</div>
-        <div class="thread-content">
-            
-        </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title"></div>
+        <div class="card-content">
+        <div class="download-section">
+            黑太阳南京大屠杀
+        <p><a href="https://share.feijipan.com/s/ZIBUbgGS" class="download-btn">下载</a>
+        
+</div>
+            </div>
     </div>
-    
-        <div class="forum-thread">
-        <a href="https://abcd136.github.io/b44/">这日本人亲口说的，太残忍了！</a>
-        <div class="thread-info">作者: 皮卡皮卡 | 发布时间: 2024-06-13 | 浏览: 5638次</div>
-        <div class="thread-content">
-            
-        </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title"></div>
+        <div class="card-content">
+        <div class="download-section">
+            这日本人亲口说的，太残忍了！
+        <p><a href="https://share.feijipan.com/s/TABU3Gj7" class="download-btn">下载</a>
+        
+</div>
+            </div>
     </div>
-    
-        <div class="forum-thread"> 
-        <a href="https://abcd136.github.io/b45/">1998年8月18日建筑工地施工过程中</a>   
-        <div class="thread-info">作者: 皮卡皮卡 | 发布时间: 2024-06-13 | 浏览: 1361次</div>
-        <div class="thread-content">
-            
-        </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title"></div>
+        <div class="card-content">
+        <div class="download-section">
+            纪录片-欧美-《南京大屠杀》
+        <p><a href="https://share.feijipan.com/s/j7BUQRbh" class="download-btn">下载</a>
+        
+</div>
+            </div>
     </div>
-    
-     <div class="forum-thread">
-        <a href="https://abcd136.github.io/b46/">纪录片-欧美-《南京大屠杀》</a>
-        <div class="thread-info">作者: 皮卡皮卡 | 发布时间: 2024-06-13 | 浏览: 1614次</div>
-        <div class="thread-content">
-            
-        </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title"></div>
+        <div class="card-content">
+        <div class="download-section">
+            《中共的真相（南京大屠杀的内幕）》
+        <p><a href="https://share.feijipan.com/s/s8BUQfTM" class="download-btn">下载</a>
+        
+</div>
+            </div>
     </div>
-    
-     <div class="forum-thread">
-        <a href="https://abcd136.github.io/b47/">《中共的真相（南京大屠杀的内幕）》</a>
-        <div class="thread-info">作者: 皮卡皮卡 | 发布时间: 2024-06-13 | 浏览: 1512次</div>
-        <div class="thread-content">
-            
-        </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">1998年8月18日建筑工地施工过程中</div>
+        <div class="card-content">
+#图说南京大屠杀史# <p>1998年8月18日，在南京一处建筑工地施工过程中，意外挖出41个人头骨和大量肢骨，现场散发刺鼻气味。
+<p>颅骨、肢骨以及同部位的骨骼被装在长约1米、宽约0.3米的简易木盒子或蒲包里，颜色发黑，味道刺鼻（后考证浓硫酸）。
+<p>专家最终判定这批尸骨属于惨死于细菌实验的同胞，埋尸地点位于荣字第1644部队本部——原中央医院旧址范围内。
+<p>1949年，1644部队第四任部队长佐藤俊二在苏联法庭上供认，1644部队曾大量制造细菌武器。
+        
+</div>
+            </div>
     </div>
-    
-    <!-- 更多主题帖子可以按照上面的格式添加 -->
+            </div>
+
+    <script>
+        function toggleMenu(event, submenuId) {
+            event.preventDefault(); // 阻止链接的默认行为
+            var submenu = document.getElementById(submenuId);
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+        // ... JavaScript代码保持不变 ...
+    </script>
 </body>
 </html>
